@@ -7,7 +7,7 @@ pre : " <b> 3.4 </b> "
 ---
 
 ## Create Application Load Balancer (ALB)
-1. Go to ***AWS Console*** > ***EC2 ***and choose the EC2 interface.
+1. Go to ***AWS Console*** > ***EC2***and choose the EC2 interface.
 ![3-30](/images/3/Img3_30.png?width=90c)
 2. Scoll down to Load Balancing Category then click on Load Balancers. Then choose Create Load Balancer.
 ![3-32](/images/3/Img3_32.png?width=90c)
