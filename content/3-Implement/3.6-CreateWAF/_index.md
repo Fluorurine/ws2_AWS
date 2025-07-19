@@ -12,7 +12,7 @@ pre : " <b> 3.6 </b> "
 ![3-60](/images/3/Img3_60.png?width=90c)
 - When we Enalbe CloudFront WAF for core protection we actually create a WAF. To view it in detail we follow:
 ![3-61](/images/3/Img3_61.png?width=90c)
-![3-63](/images/3/Img3_62.png?width=90c)
+![3-63](/images/3/Img3_63.png?width=90c)
 2. This is detail overview of Amazon WAF attached to CloudFront.
 - We can use rule tab to add more rule to our WAF.
 ![3-64](/images/3/Img3_64.png?width=90c)

@@ -82,7 +82,8 @@ exports.handler = function(event, context, callback) {
 This code fetch from S3 bucket and return the static resource to ALB.
 {{% /notice %}}
 
-The specific request and response format specify in [This Document](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html). Refer to it for more infomation.
+The specific request and response format specify in [this Document](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html). Refer to it for more infomation.
+
 5. After create Lambda function, we scroll down to Code tab then paste in the snippet. Save it with `Ctrl+S` (Windows) or File > Save. Then deploy it to our Lambda function.
 
 ![3-7](/images/3/Img3_7.png?width=90c)
