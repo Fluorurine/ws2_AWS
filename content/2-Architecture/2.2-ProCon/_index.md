@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2.2 </b> "
 ---
 
-### Benefits
+#### Benefits
 - The convenience of caching static content at edge locations.
 
 - You can define web access control lists (web ACLs) for the CloudFront distribution (using WAF), which helps you secure requests to the content with minimal configuration and administrative overhead.
@@ -15,7 +15,7 @@ pre : " <b> 2.2 </b> "
 
 - Security.
 
-### Limitations
+#### Limitations
 
 - The resources in this pattern must be in a single AWS Region, but they can be provisioned in different AWS accounts.
 
