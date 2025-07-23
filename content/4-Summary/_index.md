@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 4. </b> "
 ---
 
-## Summary and Cleanup
+### Summary and Cleanup
 
 At the end of this workshop, we will summary and clean up the resources.
 
