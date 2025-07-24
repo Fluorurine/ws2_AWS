@@ -16,7 +16,8 @@ home = [ "HTML", "RSS", "JSON"]
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
-  
+# English is the default language
+defaultContentLanguage = "vi"
 [Languages]
 [Languages.en]
 title = "Serve static content in an Amazon S3 bucket through a VPC by using Amazon CloudFront"
