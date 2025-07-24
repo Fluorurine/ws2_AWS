@@ -5,7 +5,7 @@ weight : 1
 chapter : false
 ---
 
-# Serve static content in an Amazon S3 bucket through a VPC by using Amazon CloudFront
+# Đây là content số 2 nhé.
 
 #### Overview
 
