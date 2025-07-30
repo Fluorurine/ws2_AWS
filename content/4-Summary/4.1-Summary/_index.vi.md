@@ -13,7 +13,7 @@ pre : " <b> 4.1 </b> "
    - Tìm **EC2**
    - Chọn **EC2**
 
-![Create VPC](/images/6/0001.png?featherlight=false&width=90pc)
+<!-- ![Create VPC](/images/6/0001.png?featherlight=false&width=90pc) -->
 
 2. Trong giao diện **EC2**
 
