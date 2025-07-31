@@ -1,7 +1,7 @@
-relativeURLs = false
+relativeURLs = true
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
-
+baseURL = "/"
 # For search functionality
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
@@ -17,7 +17,7 @@ home = [ "HTML", "RSS", "JSON"]
   disableBreadcrumb = false
   disableNextPrev = false
 # English is the default language
-defaultContentLanguage = "vi"
+DefaultContentLanguage = "en"
 [Languages]
 [Languages.en]
 title = "Serve static content in an Amazon S3 bucket through a VPC by using Amazon CloudFront"
@@ -40,7 +40,7 @@ weight = 20
 title = "Phục vụ nội dung tĩnh trong Amazon S3 Bucket qua VPC sử dụng Amazon CloudFront "
 weight = 2
 languageName = "Tiếng Việt"
-baseURL = "https://fluorurine.github.io/workshop2/"
+
 
 [[Languages.vi.menu.shortcuts]]
 name = "<i class='fab fa-aws'></i> AWS Study Group - Blog"
