@@ -18,7 +18,7 @@ Trong workshop này, bạn sẽ sử dụng kĩ thuật **Retrieval-Augmented Ge
 
 Tổng quát, trong chương giới thiệu này ta sẽ bắt đầu với các khái niệm nền tảng được sử dụng, những dịch vụ của Amazon hỗ trợ chúng và kiến trúc để gắn kết chúng lại với nhau.
 
-![WS2_Architecture](/images/1/WS2_Architecture.svg?featherlight=false&width=70pc "Serve static content through VPC with CloudFront")
+![WS2_Architecture](/images/1/WS2_Architecture.svg?featherlight=false&width=70pc "The architecture that we will build")
 #### Contents
 
 - [What is Amazon CloudFront ?](1.1-CloudFront/)
