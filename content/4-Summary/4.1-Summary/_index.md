@@ -6,16 +6,14 @@ chapter : false
 pre : " <b> 4.1 </b> "
 ---
 
-### What we can improve ?
-- Implement Amazon Route 53 and Geolocation Routing.
-- To automate the deployment of static content using this approach, create CI/CD pipelines to update the Amazon S3 buckets that host websites.
-- Make sure to properly define the cache for the CloudFront distribution.
-- Implement WAF security rules.
-- Upgrade ALB connection to HTTPS.
-### Related Resources
-- Optimizing caching and availability [CloudFront documentation](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html)
-- Lambda functions as targets [Elastic Load Balancing documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html)
-- Lambda quotas [Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)
+Congratulations on successfully completing the workshop. Throughout this workshop, you have gained the following knowledge and skills:
+
+- How to construct generative AI solutions by using Amazon Bedrock and a serverless architecture.
+- How to use AWS SAM to create and deploy generative AI solutions.
+- How to harness the capabilities of foundation models (FMs) through the RAG architecture.
+- Determined the importance of effective data management in the context of generative AI, which includes sourcing, storing, and preprocessing data to enhance the performance and relevance of AI-generated responses.
+- How to attain desired responses by employing a range of prompt engineering techniques.
+
 
 AWS service websites:
 - [Application Load Balancer](https://aws.amazon.com/es/elasticloadbalancing/application-load-balancer/)

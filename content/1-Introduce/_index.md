@@ -13,6 +13,14 @@ For this workshop, you will use the **Retrieval-Augmented Generation (RAG)** tec
 To begin with, in this introduction chapter we will walk through the core concepts for the workshop, Amazon services that support them and the architecture that ties everything together.
 
 ![WS2_Architecture](/images/1/WS2_Architecture.svg?featherlight=false&width=70pc "Build AI Serverless Chatbot")
+
+---
+
+{{%expand "Static version (Click)" %}}
+![WS2_Architecture](/images/1/WS2_Architecture.png?featherlight=false "Build AI Serverless Chatbot")
+{{% /expand%}}
+
+---
 #### Contents
 
 - [What is Amazon CloudFront ?](1.1-CloudFront/)
