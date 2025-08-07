@@ -12,5 +12,5 @@ At the end of this workshop, we will summary and clean up the resources.
 
 ### Content
 
-1. [Summary](4.1-summary/)
-2. [Clean up](4.2-cleanup/)
+1. [Summary](4-1Summary/)
+2. [Clean up](4-2Cleanup/)

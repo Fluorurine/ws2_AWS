@@ -16,12 +16,12 @@ pre : " <b> 3.2 </b> "
  
  ##### Simple Conversation with Chatbot UI
 
- Open browser and open the previous Amplify UI link. If you not singned in, use the credentials that you retreived ealier to sign in. The UI is displayed as follows:
+ Open browser and open the previous **Amplify** UI link. If you not singned in, use the credentials that you retreived ealier to sign in. The UI is displayed as follows:
 
 
  When you enter a question, you might expect an answer that is accompanied by relevant document references. However, if no supporting document or data source is available, you might receive a response that states: "Sorry, I don't have the answer."
 
-Try several of the following sample questions, and review the generated responses by Amazon Bedrock FMs.
+Try several of the following sample questions, and review the generated responses by **Amazon Bedroc**k FMs.
 
 ```text
 What is the role of FOMC?

@@ -7,24 +7,24 @@ pre : " <b> 2.1 </b> "
 ---
 #### Launch a CloudFormation template
 
-In order to complete the upcoming steps in this workshop, you'll need to create some resources in your chosen AWS region using a CloudFormation template.
+In order to complete the upcoming steps in this workshop, you'll need to create some resources in your chosen AWS region using a **CloudFormation** template.
 
-1. Download the CloudFormation template: {{% button href="https://static.us-east-1.prod.workshops.aws/public/6013a24d-678a-4774-81ee-46b66fb4fcab/static/template/ws-startup-stack.yaml" icon="fas fa-download" icon-position="right" %}}Download{{% /button %}}
+1. Download the **CloudFormation** template: {{% button href="https://static.us-east-1.prod.workshops.aws/public/6013a24d-678a-4774-81ee-46b66fb4fcab/static/template/ws-startup-stack.yaml" icon="fas fa-download" icon-position="right" %}}Download{{% /button %}}
  
 
  {{%expand "(Click) What this template file do? (with explanation)"%}}
-1. **Define Parameters**: This step defines configuration options that you can customize when launching the CloudFormation stack. These options include environment name, Cloud9 instance details (name, type, size, owner), and automatic stop time for Cloud9.
+1. **Define Parameters**: This step defines configuration options that you can customize when launching the **CloudFormation** stack. These options include environment name, **Cloud9** instance details (name, type, size, owner), and automatic stop time for Cloud9.
 
 2. **Create VPC** (Optional): If a default VPC is not available, this step creates a new VPC with public and private subnets, internet gateway, and route tables to allow internet access.
 
-3. **Create IAM Roles**: This step creates three IAM roles:
+3. **Create IAM Roles**: This step creates three **IAM roles**:
 
-- `C9Role`: This role gives full access (AdministratorAccess policy) to the Cloud9 instance.
-- `KendraS3DocsRole` and `KendraIndexRole`: These roles grant Kendra service permissions to access S3 buckets, CloudWatch logs, and describe log groups.
+- `C9Role`: This role gives full access (AdministratorAccess policy) to the **Cloud9** instance.
+- `KendraS3DocsRole` and `KendraIndexRole`: These roles grant Kendra service permissions to access S3 buckets, **CloudWatch** logs, and describe log groups.
 
-4. **Create Cloud9 Instance**: This step creates a Cloud9 development environment in the specified VPC subnet. The instance type, size, and owner can be configured during launch.
+4. **Create Cloud9 Instance**: This step creates a **Cloud9** development environment in the specified VPC subnet. The instance type, size, and owner can be configured during launch.
 
-5. **Create S3 Bucket**: This step creates a private S3 bucket to store documents for Kendra indexing. Public access to the bucket is disabled.
+5. **Create S3 Bucket**: This step creates a private **S3 bucket** to store documents for **Kendra** indexing. Public access to the bucket is disabled.
 
 6. **Create Kendra Index:** This step creates a Kendra index named after the CloudFormation stack with the "DEVELOPER_EDITION".
 
@@ -382,15 +382,15 @@ Outputs:
 
 **Overall Result**:
 
-Deploying this CloudFormation template will create the following resources:
+Deploying this **CloudFormation** template will create the following resources:
 
 - A VPC with internet access (if no default VPC exists)
-- A Cloud9 development environment
-- An S3 bucket for storing documents
-- A Kendra index to search the documents in the S3 bucket
-- A Kendra data source to connect the S3 bucket to the Kendra index
+- A **Cloud9** development environment
+- An **S3** bucket for storing documents
+- A **Kendra** index to search the documents in the S3 bucket
+- A **Kendra** data source to connect the S3 bucket to the Kendra index
 
-The CloudFormation template creation itself should be very quick. However, it takes additional time for provisioning the resources:
+The **CloudFormation** template creation itself should be very quick. However, it takes additional time for provisioning the resources:
 
 Approximately 30 minutes to create the Cloud9 instance and Kendra index.
 An additional 15 minutes (approximately) to crawl and index the documents specified in the data source.
@@ -401,12 +401,12 @@ So, after launching the stack, **you might need to wait around 45 minutes before
 ---
 2. Store the YAML template file in a folder on your local machine.
 
-3. Navigate to CloudFormation in the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks/new?region=us-east-1) .
+3. Navigate to **CloudFormation** in the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks/new?region=us-east-1) .
 ![2_1](/images/2/2_1.png?featherlight=false "CloudFormation")
 {{% notice tip %}}
 Choose a location that suits you. (This workshop use us-east-1)
 {{% /notice %}}
-4. On the CloudFormation console, choose create stack and **Upload a template file**.
+4. On the **CloudFormation** console, choose create stack and **Upload a template file**.
 ![2_2](/images/2/2_2.png?featherlight=false "CreateStack")
 
 
@@ -415,13 +415,13 @@ Choose a location that suits you. (This workshop use us-east-1)
 6. Give the stack a name, such as `bedrock-workshop-environment`.
    ![2_4](/images/2/2_4.png?featherlight=false "CreateStack")
 
-7. For Configure stack options, keep the default values and choose Next.
+7. For Configure stack options, keep the default values and choose **Next**.
    ![2_5](/images/2/2_5.png?featherlight=false "CreateStack")
 
-8. Review the parameters and the IAM resource notice. Select I acknowledge that AWS CloudFormation might create IAM resources.
-9.  To deploy the template, choose Submit.
+8. Review the parameters and the IAM resource notice. Select I acknowledge that **AWS CloudFormation** might create IAM resources.
+9.  To deploy the template, choose **Submit**.
    ![2_6](/images/2/2_6.png?featherlight=false "CreateStack")
 
-10. After the template is deployed, to review the created resources, navigate to [CloudFormation Resources](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/resources?) , you should see the CloudFormation stack that you created.
+10. After the template is deployed, to review the created resources, navigate to [CloudFormation Resources](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/resources?) , you should see the **CloudFormation** stack that you created.
 
    ![2_9](/images/2/2_9.png?featherlight=false "CloudFormation Stack")

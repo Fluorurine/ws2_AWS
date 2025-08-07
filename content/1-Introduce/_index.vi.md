@@ -19,10 +19,15 @@ Trong workshop này, bạn sẽ sử dụng kĩ thuật **Retrieval-Augmented Ge
 Tổng quát, trong chương giới thiệu này ta sẽ bắt đầu với các khái niệm nền tảng được sử dụng, những dịch vụ của Amazon hỗ trợ chúng và kiến trúc để gắn kết chúng lại với nhau.
 
 ![WS2_Architecture](/images/1/WS2_Architecture.svg?featherlight=false&width=70pc "The architecture that we will build")
+
+{{%expand "Phiên bản tĩnh (Click)" %}}
+![WS2_Architecture](/images/1/WS2_Architecture.png?featherlight=false "Build AI Serverless Chatbot")
+{{% /expand%}}
+
+---
 #### Contents
 
-- [What is Amazon CloudFront ?](1.1-CloudFront/)
-- [Amazon S3](1.2-AmazonS3/)
-- [WAF-ALB-Lambda](1.3-WAF-ALB-Lambda/)
-
-In the following sections, we will delve into the fundamental concepts of VPC.
+- [Một số khái niệm quan trọng](1-1CoreConcept)
+- [Amazon Bedrock, Amazon Kendra và Amazon Cloud9](1-2AWSBedrockkendra9)
+- [AWS Lambda và AWS Amplify](1-3LambdaAmplifyS3)
+- [Kiến trúc này hoạt động như thế nào?](1-4ArchitectureFlow)

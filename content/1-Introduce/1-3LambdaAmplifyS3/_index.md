@@ -43,7 +43,7 @@ Using API Gateway, you can create RESTful APIs and WebSocket APIs that enable re
 
 **Amazon Amplify** is everything you need to build full-stack web and mobile apps on AWS. Build and host your frontend, add features like auth and storage, connect to real-time data sources, deploy, and scale to millions of users.
 
-In this workshop,**Amazon Amplify will be use for building the chatbot front-end.
+In this workshop,**Amazon Amplify** will be use for building the chatbot front-end.
 
 ---
 

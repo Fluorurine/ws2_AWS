@@ -23,8 +23,7 @@ To begin with, in this introduction chapter we will walk through the core concep
 ---
 #### Contents
 
-- [What is Amazon CloudFront ?](1.1-CloudFront/)
-- [Amazon S3](1.2-AmazonS3/)
-- [WAF-ALB-Lambda](1.3-WAF-ALB-Lambda/)
-
-In the following sections, we will delve into the fundamental concepts of VPC.
+- [The core concept](1-1CoreConcept)
+- [Amazon Bedrock, Amazon Kendra and Amazon Cloud9](1-2AWSBedrockkendra9)
+- [AWS Lambda and AWS Amplify](1-3LambdaAmplifyS3)
+- [How the architecture work?](1-4ArchitectureFlow)

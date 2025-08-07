@@ -1,33 +1,73 @@
 ---
-title : "Network ACLs"
+title : "Lập chỉ mục dữ liệu mẫu bằng cách sử dụng Amazon Kendra"
 date :  "`r Sys.Date()`" 
 weight : 4
 chapter : false
 pre : " <b> 2.4 </b> "
 ---
 
-#### Network ACLs
+#### Lập chỉ mục dữ liệu mẫu bằng cách sử dụng Amazon Kendra
+
+Tải xuống dữ liệu mẫu: 
+Tải xuống một vài tài liệu mẫu để kiểm tra giải pháp này. Tài liệu đầu tiên liên quan đến biên bản cuộc họp tháng 9 năm 2023 của **Ủy ban Thị trường Mở Liên bang (FOMC)**. Tài liệu thứ hai là **Báo cáo Phát triển Bền vững của Amazon năm 2022**. Tài liệu thứ ba là **báo cáo 10K của Henry Schein**, một nhà cung cấp dịch vụ nha khoa. Bạn có thể tải xuống hoặc sử dụng bất kỳ tài liệu nào để kiểm tra giải pháp này, hoặc bạn có thể mang dữ liệu của riêng mình để tiến hành kiểm tra.
+
+Để sao chép các mẫu prompt và tài liệu mẫu bạn đã tải xuống vào S3 Bucket, hãy chạy lệnh sau
+
+```bash
+cd ~/environment/bedrock-serverless-workshop
+mkdir sample-documents
+curl https://www.federalreserve.gov/monetarypolicy/files/fomcminutes20230920.pdf --output sample-documents/fomcminutes20230920.pdf
+curl https://sustainability.aboutamazon.com/2022-sustainability-report.pdf --output sample-documents/2022-sustainability-report-amazon.pdf
+curl https://investor.henryschein.com/static-files/fcf569ec-fdbb-4591-b73d-0d1d849efd78 --output sample-documents/2022-hs1-10k.pdf
+```
+Các lệnh này sẽ tạo thư mục `sample-documents` trong môi trường **Cloud9** của chúng tôi và sử dụng lệnh `curl` để lấy một số tài liệu mẫu vào đó.
 
 
-* VPC sau khi khởi tạo sẽ có sẵn một network ACL mặc định và có thể được sửa đổi. Mặc định, nó cấp phép truy cập cho tất cả lưu lượng truy cập IPv4 hoặc IPv6 có thể đi ra hoặc đi vào VPC. 
-* Có thể tạo một network ACL tùy chỉnh và liên kết nó với một subnet. Mặc định các network ACL tùy chỉnh từ chối tất cả lưu lượng truy cập đi vào và đi ra, cho đến khi ta bổ sung rule cấp phép truy cập.
-* Từng subnet trong VPC phải được liên kết với một network ACL. Nếu subnet không được liên kết với một network ACL cụ thể thì subnet sẽ được tự động liên kết với network ACL mặc định.
-* Một network ACL có thể liên kết với nhiều subnet. Tuy nhiên, một subnet chỉ có thể liên kết với một network ACL tại một thời điểm. Khi liên kết network ACL mới với subnet,thì liên kết trước đó sẽ bị xóa.
-* Một network ACL chứa một danh sách các rule được đánh số khác nhau. AWS đánh giá các rule dựa trên số thứ tự được gán, bắt đầu với rule được đánh số thấp nhất, để xác định xem lưu lượng có được phép đi vào hay đi ra khỏi bất kỳ subnet nào được liên kết với network ACL hay không. 
-Số thứ tự lớn nhất có thể được gán cho rule là 32766 (tương đương số lượng rule lớn nhất của một network ACL là 32766).
-* Network ACL có các rule cấp phép đi vào hoặc đi ra tách biệt và rule có thể là cho phép hoặc từ chối lưu lượng.
-* Network ACL là dịch vụ Stateless, nghĩa là phản hồi đối với lưu lượng truy cập được phép đi vào, phải tuân theo rule đối với lưu lượng truy cập đi ra (và ngược lại).
 
-#### Network ACL rules
+   ![2_19](/images/2/2_19.png "Curl command image")
 
-Có thể thêm hoặc xóa một rule khỏi network ACL mặc định hoặc tạo network ACL mới cho VPC. Khi thêm hoặc xóa một rule khỏi network ACL, các thay đổi sẽ tự động được áp dụng cho các subnet được liên kết với nó.
+#### Tải lên tài liệu mẫu và mẫu prompt
 
-Các thành phần của một network ACL rule:
-* **Rule number**. Rule bắt đầu được đánh giá bắt đầu với rule có số thứ tự thấp nhất. 
-Ngay khi rule đó match với lưu lượng truy cập, nó sẽ ngay lập tức được áp dụng cho dù nó mâu thuẫn với một rule nào đó được đánh số lớn hơn trong danh sách.
-* **Type**.loại lưu lượng, ví dụ SSH. Có thể chỉ định tất cả các loại lưu lượng truy cập hoặc phạm vi tùy chỉnh.
-* **Protocol**.  chỉ định giao thức cùng số giao thức chuẩn.
-* **Port range**. port hoặc dải port lắng nghe của lưu lượng truy cập. Ví dụ: HTTP là 80.
-* **Source**. [chỉ đối với Inbound rule] Xuất phát của lưu lượng truy cập (giá trị là dải CIDR).
-* **Destination**. [chỉ đối với Outbound rule] Điểm đến của lưu lượng truy cập (giá trị là dải CIDR).
-* **Allow/Deny**.  chỉ rõ là Cho phép hoặc Từ chối lưu lượng truy cập.
+Để sao chép các mẫu prompt và tài liệu mẫu bạn đã tải xuống vào **S3 Bucket**, hãy chạy lệnh sau.
+
+```bash
+cd ~/environment/bedrock-serverless-workshop
+aws s3 cp prompt-engineering s3://$S3BucketName/prompt-engineering/ --recursive
+aws s3 cp sample-documents s3://$S3BucketName/sample-documents/ --recursive
+
+```
+   ![2_20](/images/2/2_20.png "Upload to S3")
+
+Sau khi tải lên thành công, hãy xem lại bảng điều khiển **Amazon S3** và mở bucket. Bạn sẽ thấy nội dung tương tự như hình ảnh này:
+   ![2_21](/images/2/2_21.png "S3 Bucket")
+   ![2_22](/images/2/2_22.png "S3 Bucket storage")
+
+
+#### Lập chỉ mục các tài liệu mẫu bằng cách sử dụng Amazon Kendra
+
+**Amazon Kendra** ià dịch vụ tìm kiếm thông minh được hỗ trợ bởi Machine Learning (ML). Amazon Kendra giúp bạn định nghĩa lại tìm kiếm doanh nghiệp cho các trang web và ứng dụng của mình, để nhân viên và khách hàng của bạn có thể tìm thấy nội dung họ đang tìm kiếm, ngay cả khi nội dung đó nằm rải rác trên nhiều vị trí và kho lưu trữ nội dung trong tổ chức của bạn.
+
+Chỉ mục Amazon Kendra và nguồn dữ liệu Amazon S3 đã được tạo trong quá trình cung cấp ban đầu cho workshop này. Trong tác vụ này, bạn sẽ lập chỉ mục tất cả các tài liệu trong **nguồn dữ liệu S3**( **S3 data source**).
+
+1. Đăng nhập vào AWS Management Console, sau đó nhập Kendra vào hộp tìm kiếm trên bảng điều khiển. Kiểm tra để đảm bảo tài khoản AWS của bạn có quyền truy cập vào Amazon Kendra, sau đó chọn Vùng AWS nơi workshop này đang hoạt động.
+   ![2_23](/images/2/2_23.png "Kendra")
+
+   ![2_24](/images/2/2_24.png "Kendra enviroment")
+2. Ở phía trên bên trái của bảng điều khiển Amazon Kendra, hãy chọn biểu tượng menu (dấu ba chấm), sau đó, trong ngăn điều hướng, chọn Chỉ mục (Indexes).
+   ![2_25](/images/2/2_25.png "Kendra enviroment")
+
+3. Chọn enviroment. Nhấn vào tên chỉ mục.
+   ![2_26](/images/2/2_26.png "Kendra enviroment")
+
+4. Để bắt đầu đánh chỉ mục từ thư mục `sample-documents` , chọn `S3DocsDataSource`, và chon **Sync now** (Đồng bộ ngay lập tức). Quá trình đánh chỉ mục sẽ tốn vài phút. Hãy đợi nó hoàn thành.
+   ![2_27](/images/2/2_27.png "Kendra enviroment")
+
+   5. Để query chỉ mục của **Amazon Kendra**  với một số tài liệu mẫu ở phái bảng bên phải, chọn `Search indexed content`, và bắt đầu câu hỏi.
+   ![2_28](/images/2/2_28.png "Sucessful annoucement")
+**Câu hỏi mẫu**:
+
+```text
+What is the federal funds rate as of September 2023?
+
+```
+   ![2_29](/images/2/2_29.png "Kendra query")

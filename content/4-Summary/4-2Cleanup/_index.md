@@ -7,9 +7,9 @@ pre : " <b> 4.2 </b> "
 ---
 
 #### Remove the AWS SAM application and startup CloudFormation stack
-Navigate to the AWS Cloud9 terminal, and then run the following commands:
+Navigate to the AWS **Cloud9** terminal, and then run the following commands:
 
-1. To delete SAM stack, run the following command.
+1. To delete **SAM** stack, run the following command.
 ```bash
 cd ~/environment/bedrock-serverless-workshop
 sam delete 
@@ -20,5 +20,5 @@ sam delete
 aws cloudformation delete-stack --stack-name $CFNStackName
 ```
    ![4_1](/images/4/4_1.png "Clean up Resources")
-Remember to check Kendra index too.
+Remember to check **Kendra** index too.
    ![4_2](/images/4/4_2.png "Clean up Resources")

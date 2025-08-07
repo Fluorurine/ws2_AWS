@@ -26,13 +26,11 @@ In **this workshop**, you will learn how to build a generative AI-powered chatbo
 
 
 
-<!-- ![CloudFront](/images/1-Introduce/service_icon.png?featherlight=false&width=10pc) -->
-<!-- 
+
 #### Content
 
 1. [Introduction](1-introduce/)
-2. [Firewall within VPCA](2-firewallinvpc/)
-3. [Preparation Steps](4-prerequiste/)
-4. [Creating an EC2 Server](4-createec2server/)
-5. [Configuration of Site-to-Site VPN](5-vpnsitetosite/)
-6. [Resource Cleanup](6-cleanup/) -->
+2. [Enviroment setup](2-enviromentsetup/)
+3. [Chat experinence with Bedrock](3-chatexperiencewbedrock/)
+4. [Summary](4-Summary/)
+

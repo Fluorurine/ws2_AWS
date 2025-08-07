@@ -6,11 +6,11 @@ chapter : false
 pre : " <b> 2.3 </b> "
 ---
 
-In this task, you perform steps to build and deploy the backend services. The deployment creates a serverless application where the UI will call REST-based API calls to invoke Amazon Bedrock APIs. After the code is deployed, it launches Amazon API Gateway and an AWS Lambda function.
+In this task, you perform steps to build and deploy the backend services. The deployment creates a serverless application where the UI will call REST-based API calls to invoke **Amazon Bedrock** APIs. After the code is deployed, it launches **Amazon API Gateway** and an **AWS Lambda** function.
 
 #### Build and deploy the application
 
-Open AWS Cloud9 enviroment, then clone the source code by following command:
+Open **AWS Cloud9** enviroment, then clone the source code by following command:
 
 ```bash
 cd ~/environment
@@ -129,15 +129,15 @@ echo "Save the user_id and password to login to UI"
 aws secretsmanager get-secret-value --secret-id $SecretName | jq -r .SecretString
 ```
 
-1. Prepare enviroment for Cloud9 instance.
-- Check if CloudFormation enviroment variable in previous step has been set. If not then stop.
-- Update OS. Install jq a tools to parse JSON data from AWS Services like CloudFormation.
+1. Prepare enviroment for **Cloud9** instance.
+- Check if **CloudFormation** enviroment variable in previous step has been set. If not then stop.
+- Update OS. Install jq a tools to parse JSON data from AWS Services like **CloudFormation**.
 - Set source to nvm (Node version manager) to install and update nodejs to desirable version. ( NVM come packed with Cloud9 enviroment). Then check it version.
 
-2. Building and Deploying Backend with AWS SAM
-- Retrieve current AWS region through AWS current instance metadata (`169.254.169.254` is a [Link Local Address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-dynamic-data-retrieval.html) for the Instance Metadata Serivice  in JSON format)
+2. Building and Deploying Backend with **AWS SAM**
+- Retrieve current **AWS region** through AWS current instance metadata (`169.254.169.254` is a [Link Local Address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-dynamic-data-retrieval.html) for the Instance Metadata Serivice  in JSON format)
 - `sam build` command will looking for `template.yaml`which is SAM template file to build the serverless backend.
- AWS SAM (Serverless Application Model) consists of two parts, AWS SAM CLI and AWS SAM templates. **AWS SAM CLI** is use for develop, debug and deploy serverless applications on AWS SAM templates. **AWS SAM templates** provide a short-hand syntax, optimized for defining Infrastructure as Code (IaC) for serverless applications. It is an extension of AWS CloudFormation, so it come with the same syntax as CloudFormation and we can deploy AWS SAM template directly to AWS CloudFormation.
+** AWS SAM** (Serverless Application Model) consists of two parts, AWS SAM CLI and AWS SAM templates. **AWS SAM CLI** is use for develop, debug and deploy serverless applications on AWS SAM templates. **AWS SAM templates** provide a short-hand syntax, optimized for defining Infrastructure as Code (IaC) for serverless applications. It is an extension of **AWS CloudFormation**, so it come with the same syntax as **CloudFormation** and we can deploy AWS SAM template directly to AWS CloudFormation.
 
 Back to our `template.yaml`:
 
@@ -441,13 +441,13 @@ Outputs:
 
 This template is using `2010-09-09` template format version and use AWS Transform `AWS::Serverless-2016-10-31` for serverless application definition.
 **Parameter**:
-- **KendraIndexId**: Allows specifying the ID of the Kendra index used for search (String type).
-- **BedrockWSS3Bucket**: Allows defining the name of the S3 bucket used by the workshop (String type).
-- **ApiGatewayStageName**: Sets the stage name for the API Gateway (default: "prod").
+- **KendraIndexId**: Allows specifying the ID of the **Kendra** index used for search (String type).
+- **BedrockWSS3Bucket**: Allows defining the name of the **S3 bucket** used by the workshop (String type).
+- **ApiGatewayStageName**: Sets the stage name for the **API Gateway** (default: "prod").
   
 **Globals**:
-- **Function**: Configures defaults for Lambda functions like timeout (60 seconds), memory size (5000 MB), and enabling tracing.
-- **Api**: Configures API Gateway settings like enabling tracing and CORS (Cross-Origin Resource Sharing) with permissive settings allowing all origins, methods, and header.
+- **Function**: Configures defaults for **Lambda** functions like timeout (60 seconds), memory size (5000 MB), and enabling tracing.
+- **Api**: Configures API Gateway settings like enabling tracing and **CORS** (Cross-Origin Resource Sharing) with permissive settings allowing all origins, methods, and header.
   
 **Resources**:
 - Create **API Gateway REST API** with the name  `bedrock-workshop` in resource name `BedrockLambdaApi` sact as entry point for application.
@@ -460,26 +460,26 @@ It allows the client to gather information about the supported HTTP methods (GET
 
 > **Intergation vs Method Response**: An integration defines how API Gateway interacts with your backend service to handle a client request (define "how" to handle the request to backend) while a method response defines the structure and content of the response that API Gateway sends back to the client application after processing a request (define "what" to return to client).
 
-- **ApiCognitoAuthorizer**: defines an authorizer that uses a Cognito User Pool to validate incoming API requests. Clients will need to include a valid authorization token in the `Authorizatio`n header for successful requests (`IdentitySource: 'method.request.header.Authorization'`). The ARN of this Pool will be define later.
+- **ApiCognitoAuthorizer**: defines an authorizer that uses a **Cognito User Pool** to validate incoming API requests. Clients will need to include a valid authorization token in the `**Authorization header** for successful requests (`IdentitySource: 'method.request.header.Authorization'`)`. The ARN of this Pool will be define later.
 - **ApiGatewayPostMethod**: defines a POST method that requires Cognito User Pool authorization. When a POST request is received, API Gateway validates the authorization token using the ApiCognitoAuthorizer above (   `Properties: AuthorizationType: COGNITO_USER_POOLS + AuthorizerId: !Ref ApiCognitoAuthorizer`). If valid, it will act as proxy and forwards the entire request to the BedrockLLMFunction Lambda function (define later) then return the response to client. More [document on this](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-method.html).
 
 - **ChatbotUserPool**: acts as a directory for storing user information like usernames, emails, passwords, and other custom attribute. In this workshop, we will store those attribute with a schema that include email and name of user. Email is unmutable and is verify automatically during sign up process (AutoVerifiedAttributes include email)
 - **ChatbotUserPoolClient**: represents your application and defines how it can interact with the `ChatbotUserPool`. In our case, it allow many AuthFlows (Ex: `ALLOW_USER_PASSWORD_AUTH` and `ALLOW_REFRESH_TOKEN`) and make use of AWS Cognito as Identity Providers (SupportedIdentityProviders include COGNITO)
-- **CognitoUserCreateFunction**: Define Lambda function to handle interaction with AWS Cognito secret manager (event will trigger when create or delete event on CloudFormation stack) then create the user to associate with that CloudFormation Stack. Then we create custom event for this to work and response back to our stack. This can be modify futher for login with API gateway in Lambda function. As for now, understand it as if.
+- **CognitoUserCreateFunction**: Define **Lambda** function to handle interaction with AWS Cognito secret manager (event will trigger when create or delete event on CloudFormation stack) then create the user to associate with that **CloudFormation** Stack. Then we create custom event for this to work and response back to our stack. This can be modify futher for login with API gateway in Lambda function. As for now, understand it as if.
 - **ApiGatewayDeployment**: Deploy `BedrockLambdaApi` that we metion before. This cannot happen before `ApiGatewayPostMethod` step. 
 - **ApiGatewayStage**: Change the stage of `BedrockLambdaApi` to `ApiGatewayStageName` stage name "**prod**" in this case.
-- **BedrockFunctionPermission**: Create IAM for the API Gateway to invoke Lambda function (`lambda:InvokeFunction`) according to [AWS API Gateway principal](apigateway.amazonaws.com) . We will create that function(`BedrockLLMFunction`) in next step.
+- **BedrockFunctionPermission**: Create IAM for the **API Gateway** to invoke **Lambda** function (`lambda:InvokeFunction`) according to [AWS API Gateway principal](apigateway.amazonaws.com) . We will create that function(`BedrockLLMFunction`) in next step.
 - **BedrockLLMFunction**: This is our **main function** to interact with Amazon Bedrock API as all POST request with chat data will forward to this endpoint. The function locate in `bedrockFunc` directory in current path (` CodeUri: bedrockFunc`), it entry point is `lambda_handler` (`Handler: bedrockllm.lambda_handler`), it take `KENDRA_INDEX_ID` and `S3_BUCKET_NAME` as enviroment variable. Moreover, it policy allows:
-  - Interact with a **Kendra** index (query, suggestions, retrieval) based on the KendraIndexId environment variable.
+  - Interact with a **Kendra** index (query, suggestions, retrieval) based on the `KendraIndexId` environment variable.
   - Access an **S3 bucket** (list objects, get objects, describe bucket) based on the BedrockWSS3Bucket environment variable.
   - Perform various **Bedrock** Model actions (list, get, invoke, permissions, logging, tagging) potentially interacting with a Bedrock service.
 
 
 
 - Finally, we will breakdown the **output** we retrieved from this SAM template:
-  - **CognitoUserPool**: CognitoUserPool location
+  - **CognitoUserPool**: **CognitoUserPool** location
   - **CongnitoUserPoolClientID**: Cognito User Pool Client ID
-  - **BedrockApiUrl**: API Gateway endpoint URL for the Bedrock Lambda Function
+  - **BedrockApiUrl**: **API Gateway** endpoint URL for the Bedrock Lambda Function
   - **SecretsName**: Secrets name to retrieve ui credentials
 {{% /expand%}}
 
@@ -639,7 +639,7 @@ def lambda_handler(event, context):
         }
         return error_
 ```
-This Python script take S3 location and Amazon Kendra index from our CloudFormation stack as enviroment variable. Depend on user input on main Lambda handler received event, it set the apporiate variable template for different LLM models (for simplicity this workshop will use simple login if statement). To generate an answer, it will retreive the instruction context of the prompt (prompt template - can be found at `prompt-engineering` directory at the project root path). Here is a example of a prompt template, the variable will be subsitute in:
+This Python script take **S3 bucket** location and **Amazon Kendra** index from our **CloudFormation** stack as enviroment variable. Depend on user input on main Lambda handler received event, it set the apporiate variable template for different LLM models (for simplicity this workshop will use simple login if statement). To generate an answer, it will retreive the instruction context of the prompt (prompt template - can be found at `prompt-engineering` directory at the project root path). Here is a example of a prompt template, the variable will be subsitute in:
     
  ```text
 Human: We are conducting a Generative AI workshop, please carefully construct your response for the question from the given context only - {context}.
@@ -650,7 +650,7 @@ Here is the question you should process: {question}
 
 Assistant:
  ```
-Next, we create a bedrock client and get the `bedrock_llm` base on LLM template above then feed it to create a LangChain object (`RetrievalQA`) which combines the LLM with an Amazon Kendra retriever (for finding relevant documents) and the defined prompt template. That object is called and extracted to get the answer and source document relevant. The result can be returned to front-end with 200 HTTP request in JSON format.
+Next, we create a bedrock client and get the `bedrock_llm` base on LLM template above then feed it to create a LangChain object (`RetrievalQA`) which combines the LLM with an Amazon Kendra retriever (for finding relevant documents) and the defined prompt template. We convert the question to vector using Langchain to retrieve client object. That object is called and extracted to get the answer and source document relevant. The result can be returned to front-end with 200 HTTP request in JSON format.
 
 {{% /expand%}}
 
@@ -665,12 +665,12 @@ Running sam build will create a folder named .aws-sam/build in your project dire
    ![2_14](/images/2/2_14.png "SAM stack Result")
 
 
-- We export the S3 bucket name and Kendra Index Id from our CloudFormation Stack that we created.
-- Give a name for the SAM stack that we are going to deploy.
+- We export the **S3 bucket name** and `Kendra Index Id` from our **CloudFormation** Stack that we created.
+- Give a name for the **SAM** stack that we are going to deploy.
 - Copy optional `samconfig.toml` configuration file from `tools` directory and subsitute the parameters.
-- Deploy the SAM stack
-- Extract the ouput of SAM stack to enviroment variable and display them for later use.
-1. Building and Deploying Frontend with AWS Amplify
+- Deploy the **SAM** stack
+- Extract the ouput of **SAM** stack to enviroment variable and display them for later use.
+3. Building and Deploying Frontend with AWS Amplify
 - Navigate to front end directory.
 - Installing all Nodejs and Vuejs dependencies
 - Copy AWS credential to current working directory. (`cp ~/.aws/credentials ~/.aws/config`)
