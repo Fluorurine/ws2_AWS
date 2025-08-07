@@ -7,13 +7,18 @@ chapter : false
 
 ## Create a Serverless Chatbot with Amazon Bedrock, Amazon Kendra with Your Own Data.
 
+
 #### Introduction
+
+**This workshop build do demonstrate how I would pratice implement**: [This AWS Workshop Catalog](https://catalog.us-east-1.prod.workshops.aws/workshops/27eb3134-4f33-4689-bb73-269e4273947a/en-US) on my enviroment - Special thanks to the [Author](https://catalog.us-east-1.prod.workshops.aws/).
 
 **Generative artificial intelligence** (generative AI) represents an exciting new frontier in technology that has the potential to revolutionize many industries. Unlike traditional machine learning models that are trained to recognize patterns in data, generative AI can create completely new data that is indistinguishable from data created by humans.
 
 **Some examples of generative AI** include text generators (such as GPT-3, Anthropic Claude, and Amazon Titan) image generators (such as DALL-E 2 and Stable Diffusion), and music generators. These models can take a small sample of text, images, or music and generate completely new, realistic outputs based on the patterns that they have learned. This moves AI from just analyzing our world to actually creating within it. Then, AI can apply that knowledge to solve new problems in human-like ways. For example, AI technology can respond meaningfully to human conversations, create original images and text, and make decisions based on real-time data inputs. **Your organization can integrate AI capabilities** in your applications to optimize business processes, improve customer experiences, and accelerate innovation.
 
 **Amazon Web Services** (AWS) provides the most comprehensive services, tools, and resources to meet your AI technology requirements. AWS makes AI accessible to organizations of all sizes so anyone can build innovative, new technology without having to worry about infrastructure resources. [AWS machine learning and artificial intelligence](https://aws.amazon.com/machine-learning/) offers hundreds of services to build and scale AI applications for every type of use case.
+
+
 
 
 In **this workshop**, you will learn how to build a generative AI-powered chatbot by using **Amazon Bedrock** and **Amazon Kendra**. You also learn how to build this chatbot by using Amazon Lambda serverless services.
