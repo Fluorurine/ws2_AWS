@@ -5,7 +5,7 @@ weight : 2
 chapter : false
 pre : " <b> 3.2 </b> "
 ---
- ##### Prompt parameters
+ #### Prompt parameters
  Prompt parameters refer to the instructions, guidelines, or specific inputs provided to an FM to influence the generated output. These parameters are essential for fine-tuning the model's responses and ensuring that the generated text aligns with the desired context or goals.
 
 **Prompt**: a textual input given to the model to initiate a response. A prompt can be in the form of a question, statement, or incomplete sentence. The quality and specificity of the prompt can greatly affect the output. In the next task, you will experience various prompt engineering methods.
@@ -14,7 +14,7 @@ pre : " <b> 3.2 </b> "
 
 **Max tokens**: a parameter that limits the length of the generated response. You can set a maximum number of tokens to control the length of the output.
  
- ##### Simple Conversation with Chatbot UI
+ #### Simple Conversation with Chatbot UI
 
  Open browser and open the previous **Amplify** UI link. If you not singned in, use the credentials that you retreived ealier to sign in. The UI is displayed as follows:
 

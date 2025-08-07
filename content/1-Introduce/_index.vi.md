@@ -25,7 +25,7 @@ Tổng quát, trong chương giới thiệu này ta sẽ bắt đầu với các
 {{% /expand%}}
 
 ---
-#### Contents
+#### Nội dung
 
 - [Một số khái niệm quan trọng](1-1CoreConcept)
 - [Amazon Bedrock, Amazon Kendra và Amazon Cloud9](1-2AWSBedrockkendra9)

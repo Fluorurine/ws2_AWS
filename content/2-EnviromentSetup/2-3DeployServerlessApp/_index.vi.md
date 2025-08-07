@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2.3 </b> "
 ---
 
-rong tác vụ này, bạn sẽ thực hiện các bước để xây dựng và triển khai các dịch vụ backend. Việc triển khai tạo ra một ứng dụng serverless, nơi UI sẽ gọi các cuộc gọi API dựa trên REST để kích hoạt các API của **Amazon Bedrock**. Sau khi mã được triển khai, nó sẽ khởi chạy **Amazon API Gateway** và một hàm **AWS Lambda**.
+Trong tác vụ này, bạn sẽ thực hiện các bước để xây dựng và triển khai các dịch vụ backend. Việc triển khai tạo ra một ứng dụng serverless, nơi UI sẽ gọi các cuộc gọi API dựa trên REST để kích hoạt các API của **Amazon Bedrock**. Sau khi mã được triển khai, nó sẽ khởi chạy **Amazon API Gateway** và một hàm **AWS Lambda**.
 
 #### Xây dựng và triển khai ứng dụng
 
@@ -129,20 +129,20 @@ echo "Save the user_id and password to login to UI"
 aws secretsmanager get-secret-value --secret-id $SecretName | jq -r .SecretString
 ```
 
-1. Prepare enviroment for **Cloud9** instance.
-- Check if **CloudFormation** enviroment variable in previous step has been set. If not then stop.
-- Update OS. Install jq a tools to parse JSON data from AWS Services like **CloudFormation**.
-- Set source to nvm (Node version manager) to install and update nodejs to desirable version. ( NVM come packed with Cloud9 enviroment). Then check it version.
+1. Chuẩn bị môi trường cho instance **Cloud9**.
+- Kiểm tra nếu biến môi trường  **CloudFormation** trong bước trước đã được gán giá trị chưa. Nếu không hay kiểm tra lại bưới trước.
+- Cập nhật hệ điều hành. Cài đặt jq một công cụ để thao tác với dữ liệu dạng JSON trả về từ các dịch vụ AWS như **CloudFormation**.
+- Chỉnh nguồn dự án thành nvm (Node version manager) để tải và cập nhật npm theo phiên bản chúng ta mong muốn. ( NVM được tích hợp sẵn trong môi trường Cloud9). Sau đó kiểm tra phiên bản npm.
 
-2. Building and Deploying Backend with **AWS SAM**
-- Retrieve current **AWS region** through AWS current instance metadata (`169.254.169.254` is a [Link Local Address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-dynamic-data-retrieval.html) for the Instance Metadata Serivice  in JSON format)
-- `sam build` command will looking for `template.yaml`which is SAM template file to build the serverless backend.
-** AWS SAM** (Serverless Application Model) consists of two parts, AWS SAM CLI and AWS SAM templates. **AWS SAM CLI** is use for develop, debug and deploy serverless applications on AWS SAM templates. **AWS SAM templates** provide a short-hand syntax, optimized for defining Infrastructure as Code (IaC) for serverless applications. It is an extension of **AWS CloudFormation**, so it come with the same syntax as **CloudFormation** and we can deploy AWS SAM template directly to AWS CloudFormation.
+2. Xây dựng và triển khai backend với **AWS SAM**
+- Nhận thông tin **AWS region** thông qua dữ liệu metadata của instance hiện tại trong AWS (`169.254.169.254` là một [Link Local Address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-dynamic-data-retrieval.html) phục vụ việc trả về metadata liên quan đến instance dưới định dạng JSON)
+- `sam build` sẽ tìm kiếm tệp tin `template.yaml` gọi là SAM template file để xây dựng phần backend của ứng dụng.
+** AWS SAM** (Serverless Application Model) bao gồm 2 phần, AWS SAM CLI và AWS SAM templates. **AWS SAM CLI** được sử dụng để phát triển, sửa lỗi và triển khai các ứng dụng serverless viết bằng AWS SAM templates. **AWS SAM templates** cung cấp cấu trúc tinh gọn tối ưu trong xây dựng Infrastructure as Code (IaC) - cơ sở hạ tầng như code cho các ứng dụng serverless. Nó là một bản mở rộng của **AWS CloudFormation**, vậy nên nó sẽ có cùng cấu trúc như là **CloudFormation** và chúng ta có thể triển khai AWS SAM template trực tiếp đến AWS CloudFormation.
 
-Back to our `template.yaml`:
+Trở về file `template.yaml` của chúng ta:
 
 ---
-{{%expand "Explain backend architecture with template.yaml (Click)"%}}
+{{%expand "Giải thích các kiến trúc Backend trong template.yaml (Click)"%}}
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31

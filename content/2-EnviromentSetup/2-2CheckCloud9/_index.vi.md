@@ -8,7 +8,7 @@ pre : " <b> 2.2 </b> "
 
 #### Truy cập Cloud9
 
-Đê theiét lập môi trường,bạn mở **AWS Cloud9** theo hướng dẫn sau:
+Đê thiết lập môi trường,bạn mở **AWS Cloud9** theo hướng dẫn sau:
 
 1. Từ **AWS Management Console**, ta chọn **AWS Cloud9**.
    ![2_7](/images/2/2_7.png?featherlight=false "Clou9Search")

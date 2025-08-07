@@ -5,7 +5,7 @@ weight : 2
 chapter : false
 pre : " <b> 3.2 </b> "
 ---
- ##### Các tham số Prompt
+ #### Các tham số Prompt
 Các tham số Prompt đề cập đến các hướng dẫn, nguyên tắc hoặc đầu vào cụ thể được cung cấp cho một FM để tác động đến đầu ra được tạo. Các tham số này rất cần thiết để tinh chỉnh phản hồi của mô hình và đảm bảo rằng văn bản được tạo ra phù hợp với ngữ cảnh hoặc mục tiêu mong muốn.
 
 **Prompt**: đầu vào văn bản được cung cấp cho mô hình để bắt đầu tạo phản hồi. Một prompt có thể ở dạng câu hỏi, câu lệnh hoặc câu chưa hoàn thành. Chất lượng và tính cụ thể của prompt có thể ảnh hưởng rất lớn đến đầu ra. Trong tác vụ tiếp theo, bạn sẽ trải nghiệm các phương pháp kỹ thuật prompt khác nhau.
@@ -13,7 +13,7 @@ Các tham số Prompt đề cập đến các hướng dẫn, nguyên tắc ho�
 **Model temperature**:một tham số kiểm soát tính ngẫu nhiên của văn bản được tạo. Giá trị cao hơn (chẳng hạn như 0,9 và 1) làm cho đầu ra đa dạng và sáng tạo hơn. Giá trị thấp hơn (chẳng hạn như 0 và 0,1) làm cho đầu ra tập trung và xác định hơn.
 **Max tokens**:  một tham số giới hạn độ dài của phản hồi được tạo. Bạn có thể đặt số token tối đa để kiểm soát độ dài của đầu ra.
  
- ##### Trò chuyện đơn giản với Giao diện người dùng Chatbot
+ #### Trò chuyện đơn giản với Giao diện người dùng Chatbot
 
 Mở trình duyệt và truy cập vào liên kết **Amplify** UI trước đó. Nếu bạn chưa đăng nhập, hãy sử dụng thông tin xác nhận đã lấy trước đó để đăng nhập. Giao diện người dùng được hiển thị như sau:
 

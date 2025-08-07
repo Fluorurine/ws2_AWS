@@ -18,7 +18,7 @@ Giải pháp trong workshop này được xây dựng dựa trên phương pháp
 
 **LangChain**: Để dàn xếp luồng này, chúng tôi sử dụng tác nhân LangChain trong workshop này. Các phép trừu tượng linh hoạt và bộ công cụ toàn diện của LangChain cho phép các nhà phát triển tận dụng các khả năng của các mô hình nền tảng (FM).
 
-#### Contents
+#### Nội dung
 
 - [Bật các Mô hình Nền tảng trong Amazon Bedrock](3-1SetUpBedRock)
 - [Trò chuyện đơn giản với Giao diện người dùng Chatbot](3-2SimpleConversation)

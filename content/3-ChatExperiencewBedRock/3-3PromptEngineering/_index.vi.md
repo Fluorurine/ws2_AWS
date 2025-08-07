@@ -56,7 +56,7 @@ aws s3 cp prompt-engineering/claude-prompt-template.txt s3://${S3BucketName}/pro
 
 1. Return to the Amplify app browser tab  (switch to Cladue Model) and ask the following questions.
 
-Question 1:
+Câu hỏi 1:
 ```text
 What is the federal funds rate as of September 2024?
 
@@ -66,7 +66,7 @@ Câu hỏi này không có ý định có câu trả lời vì nó liên quan đ
    ![3_6](/images/3/3_6.png "Sample question")
 
 
-Question 2:
+Câu hỏi   2:
 ```text
 What is the federal funds rate as of September 2023?
 
